@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-shoot {
+  animation: shoot 3s ease-out forwards;
+}
+
+.star {
+  @apply absolute w-1 h-1 bg-white rounded-full animate-twinkle;
+  box-shadow: 0 0 4px 1px white;
+}
+
+.shooting-star {
+  @apply absolute w-1 h-1 bg-white;
+  box-shadow: 0 0 20px 4px white;
+}
+
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(to left, white, transparent);
+}
+
+.space-gradient {
+  background: linear-gradient(180deg, 
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.8) 25%,
+    rgba(0,0,0,0.6) 50%,
+    rgba(0,0,0,0.8) 75%,
+    rgba(0,0,0,0.95) 100%
+  );
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
